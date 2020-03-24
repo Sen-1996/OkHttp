@@ -17,7 +17,7 @@ import okhttp3.Response;
 public class RequestManager {
 
     //设置请求的超时时间(单位为秒)
-    public static final int TIMEOUT = 15;
+    public static final int TIMEOUT = 25;
 
     //创建OkHttpClient
     protected final OkHttpClient.Builder builder = new OkHttpClient.Builder();
@@ -29,7 +29,7 @@ public class RequestManager {
      * @throws IOException
      */
     protected Response execute(Request request) throws IOException {
-        builder.connectTimeout(15000, TimeUnit.MILLISECONDS);
+        builder.connectTimeout(25000, TimeUnit.MILLISECONDS);
         return builder.build().newCall(request).execute();
     }
 
@@ -41,7 +41,7 @@ public class RequestManager {
      * @throws IOException
      */
     protected void enqueue(Request request, OkHttpCallback callback) throws IOException {
-        builder.connectTimeout(15000, TimeUnit.MILLISECONDS);
+        builder.connectTimeout(25000, TimeUnit.MILLISECONDS);
         builder.retryOnConnectionFailure(true);
         builder.readTimeout(TIMEOUT, TimeUnit.SECONDS);
         builder.writeTimeout(TIMEOUT, TimeUnit.SECONDS);
